@@ -38,8 +38,7 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskStatus status = TaskStatus.PENDING;
 
-    @JoinColumn(name = "task_id")
-    @OneToMany
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<Tag> tags = new ArrayList<>();
+    private List<TaskTag> taskTags = new ArrayList<>();
 }
